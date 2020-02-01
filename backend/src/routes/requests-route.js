@@ -35,11 +35,11 @@ router.post('/', requests.createRequests);
  * path:
  *  /requests/:
  *    get:
- *      summary: Get all technicals requests
+ *      summary: Get all technicals requests and apply filter if needed
  *      tags: [Requests]
  *      responses:
  *        "200":
- *          description: Get all technicals requests
+ *          description: Get all technicals requests and apply filter if needed
  *          content:
  *            application/json:
  *              schema:
@@ -52,7 +52,7 @@ router.get('/', requests.getRequests);
  * path:
  *  /requests/{consumerId}:
  *    get:
- *      summary: Get technicals requests by customer
+ *      summary: Get technicals requests by id
  *      tags: [Requests]
  *      parameters: [
  *          {
@@ -66,7 +66,7 @@ router.get('/', requests.getRequests);
  *      ]
  *      responses:
  *        "200":
- *          description: Get technicals requests by customer
+ *          description: Get technicals requests by id
  *          content:
  *            application/json:
  *              schema:
@@ -95,7 +95,7 @@ router.get('/status/types', requests.getStatusTypes);
  * @swagger
  * path:
  *  /requests/{consumerId}:
- *    get:
+ *    delete:
  *      summary: Delete an technical request by Id.
  *      tags: [Requests]
  *      parameters: [
@@ -110,7 +110,7 @@ router.get('/status/types', requests.getStatusTypes);
  *      ]
  *      responses:
  *        "200":
- *          description: Get technicals requests by customer
+ *          description: Delete an technical request by Id.
  *          content:
  *            application/json:
  *              schema:
@@ -122,7 +122,7 @@ router.delete('/:id', requests.deleteOne);
  * @swagger
  * path:
  *  /requests/{consumerId}:
- *    get:
+ *    put:
  *      summary: Update an technical request by Id.
  *      tags: [Requests]
  *      parameters: [
@@ -137,7 +137,7 @@ router.delete('/:id', requests.deleteOne);
  *      ]
  *      responses:
  *        "200":
- *          description: Get technicals requests by customer
+ *          description: Update an technical request by Id.
  *          content:
  *            application/json:
  *              schema:
