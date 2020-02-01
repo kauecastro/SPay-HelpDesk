@@ -55,7 +55,7 @@ const updateOne = (req, res) => {
   const filters = parameters.getFilter();
   const _id = parameters.getId();
 
-  requestsCollection.deleteOne({ _id }, filters)
+  requestsCollection.updateOne({ _id }, filters)
     .then(Requests => res.status(200).json({ status: true, message: 'Success!', data: Requests }))
     .catch(e => res.status(500).json({ status: false, message: e }))
 };
