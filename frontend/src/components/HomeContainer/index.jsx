@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import FormRegister from '../FormRegister';
 import Snackbar from '@material-ui/core/Snackbar';
 import TableRegister from '../TableRegister';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function createData(id, email, titulo, status) {
     return { id, email, titulo, status };
@@ -61,6 +62,10 @@ const HomeContainer = () => {
             <Container maxWidth="md">
                 <Typography component="div" style={{ backgroundColor: '#eee', height: 'auto', paddingBottom: '2rem' }}>
                     <FormRegister sendForm={handleForm} itemEditable={editItem} canEdit={canEdit} />
+
+                    <Container maxWidth="xs" style={{ textAlign: 'center' }}>
+                        <CircularProgress />
+                    </Container>
 
                     <Container maxWidth="md">
                         <TableRegister rows={rows} deleteItem={deleteItem} updateItem={updateItem} />
