@@ -5,22 +5,22 @@
  *      Requests:
  *        type: object
  *        required:
- *          - consumerId
+ *          - email
  *        properties:
- *          consumerId:
+ *          email:
  *            type: string
- *          requestType:
+ *          title:
  *            type: string
- *          requestDate:
+ *          body:
  *            type: string
  *          requestStatus:
- *            type: string
+ *            type: number
  *      
  *          
  *        example:
- *           consumerId: 1
- *           requestType: FAIL_ON_ACCESS_ACCOUNT
- *           requestDate: 2019-11-14T10:25:00
+ *           email: user.lastname@jurupinga.com
+ *           title: How can I transfer money?
+ *           body: 2019-11-14T10:25:00
  *           requestStatus: 1
  * 
  *      RequestsStatusType:
@@ -38,10 +38,10 @@
 const mongoose = require('mongoose');
 
 const requests = new mongoose.Schema({
-  consumerId: { type: String, required: true },
-  requestType: { type: String, required: false },
-  requestDate: { type: Date, required: false },
-  requestStatus: {type: String, required: false }
+  email: { type: String, required: true },
+  title: { type: String, required: false },
+  body: { type: String, required: false },
+  requestStatus: {type: Number, required: false }
 })
 
 module.exports = mongoose.model('requests', requests);

@@ -2,31 +2,34 @@ const requestEnum = require('../../enums/requests');
 
 class PostRequestParameters {
     constructor(req) {
-      this.validateStatus = req.body.requestStatus;
       this.request = {
-        consumerId: req.body.consumerId,
-        requestType: req.body.requestType,
-        requestDate: new Date().toISOString(),
-        requestStatus: requestEnum[req.body.requestStatus]
+        email: req.body.email,
+        title: req.body.title,
+        requestStatus: req.body.requestStatus,
+        body: req.body.body
       };
     }
   
     validate() {
-      let response = [];
-  
-      if (!this.request.consumerId) {
-        response.push('consumerId Invalid');
+      let errors = [];
+      
+      if (!this.request.email) {
+        errors.push('email Invalid');
       }
 
-      if(!this.request.requestStatus && !requestEnum[this.validateStatus]) {
-        response.push('Status Invalid. Access /requests/status/types route to get all disponible request status.');
+      if(!this.request.requestStatus || (this.request.requestStatus && !requestEnum[this.request.requestStatus])) {
+        errors.push('Status Invalid. Access /requests/status/types route to get all disponible request status.');
       }
   
-      if (!this.request.requestType) {
-        response.push('Request Type is invalid');
+      if (!this.request.title) {
+        errors.push('title is invalid');
+      }
+
+      if (!this.request.body) {
+        errors.push('body is invalid');
       }
   
-      return response;
+      return errors;
     }
   }
   
