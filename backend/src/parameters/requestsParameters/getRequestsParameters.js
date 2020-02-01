@@ -3,10 +3,10 @@ const requestEnum = require('../../enums/requests');
 class GetRequestsParameters {
     constructor(req) {
       this.filters = {
-        consumerId: req.params.consumerId,
-        requestType: req.params.requestType,
-        requestDate: req.params.requestDate,
-        requestStatus: req.params.requestStatus
+        _id: req.params.id,
+        email: req.query.email,
+        title: req.query.title,
+        requestStatus: req.query.requestStatus
       };
     }
 
@@ -23,20 +23,20 @@ class GetRequestsParameters {
     getFilter() {
       let filter = {};
   
-      if (this.filters.consumerId) {
-        filter.consumerId = this.filters.consumerId;
+      if (this.filters._id) {
+        filter._id = this.filters._id;
+      }
+
+      if (this.filters.email) {
+        filter.email = this.filters.email;
       }
   
-      if (this.filters.requestType) {
-        filter.key = this.filters.requestType;
-      }
-  
-      if (this.filters.requestDate) {
-        filter.value = this.filters.requestDate;
+      if (this.filters.title) {
+        filter.title = this.filters.title;
       }
   
       if (this.filters.requestStatus) {
-        filter.value = this.filters.requestStatus;
+        filter.requestStatus = this.filters.requestStatus;
       }
   
       return filter;

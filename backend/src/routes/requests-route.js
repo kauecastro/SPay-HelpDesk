@@ -72,7 +72,7 @@ router.get('/', requests.getRequests);
  *              schema:
  *                $ref: '#/components/schemas/Requests'
  */
-router.get('/:consumerId', requests.getRequests);
+router.get('/:id', requests.getRequests);
 
 /**
  * @swagger
@@ -90,5 +90,59 @@ router.get('/:consumerId', requests.getRequests);
  *                $ref: '#/components/schemas/RequestsStatusType'
  */
 router.get('/status/types', requests.getStatusTypes);
+
+/**
+ * @swagger
+ * path:
+ *  /requests/{consumerId}:
+ *    get:
+ *      summary: Delete an technical request by Id.
+ *      tags: [Requests]
+ *      parameters: [
+ *          {
+                name: 'requestId',
+                in: 'path',
+                schema: {
+                    type: 'string',
+                },
+                required: false
+            },
+ *      ]
+ *      responses:
+ *        "200":
+ *          description: Get technicals requests by customer
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Requests'
+ */
+router.delete('/:id', requests.deleteOne); 
+
+/**
+ * @swagger
+ * path:
+ *  /requests/{consumerId}:
+ *    get:
+ *      summary: Update an technical request by Id.
+ *      tags: [Requests]
+ *      parameters: [
+ *          {
+                name: 'requestId',
+                in: 'path',
+                schema: {
+                    type: 'string',
+                },
+                required: false
+            },
+ *      ]
+ *      responses:
+ *        "200":
+ *          description: Get technicals requests by customer
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Requests'
+ */
+router.put('/:id', requests.updateOne); 
 
 module.exports = router;
