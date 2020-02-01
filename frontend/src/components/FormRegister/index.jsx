@@ -44,14 +44,15 @@ export default function FormRegister(props) {
             setDescricao(props.itemEditable.descricao);
             setStatus(props.itemEditable.status);
         }
-    }, props.itemEditable);
+    }, [props]);
 
     const classes = useStyles();
 
     const disabled = titulo && email && descricao;
 
     const verifyForm = () => {
-        props.sendForm({ email, titulo, descricao, update: props.canEdit })
+        const id = props.itemEditable && props.itemEditable.id ? props.itemEditable.id : 0;
+        props.sendForm({ email, titulo, descricao, update: props.canEdit, id, status })
         setTitulo('');
         setEmail('');
         setDescricao('');

@@ -58,19 +58,19 @@ export default function SimpleTable(props) {
                         {props.rows && props.rows.map(row => (
                             <TableRow key={row.id}>
                                 <TableCell scope="row">
-                                    {row.titulo}
+                                    {row.title}
                                 </TableCell>
-                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row._id}</TableCell>
                                 <TableCell>{row.email}</TableCell>
-                                <TableCell>{status[row.status]}</TableCell>
+                                <TableCell>{status[row.requestStatus]}</TableCell>
                                 <TableCell align="right">
                                     <Tooltip title="Editar">
-                                        <IconButton aria-label="delete" onClick={() => updateItem(row.id)}>
+                                        <IconButton aria-label="delete" onClick={() => updateItem(row._id)}>
                                             <Icon>edit</Icon>
                                         </IconButton>
                                     </Tooltip>
                                     <Tooltip title="Deletar">
-                                        <IconButton aria-label="delete" onClick={() => deleteItem(row.id)}>
+                                        <IconButton aria-label="delete" onClick={() => deleteItem(row._id)}>
                                             <Icon>delete</Icon>
                                         </IconButton>
                                     </Tooltip>
