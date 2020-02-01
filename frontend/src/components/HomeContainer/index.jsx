@@ -19,7 +19,7 @@ const HomeContainer = () => {
 
     const getAllRequests = () => {
         setLoadingList(true);
-        axios.get(`http://localhost:8883/requests/`)
+        axios.get(`http://backend:883/requests/`)
             .then(res => {
                 setRows(res.data.data);
                 setLoadingList(false);
@@ -27,7 +27,7 @@ const HomeContainer = () => {
     }
 
     const createRequest = (req) => {
-        axios.post(`http://localhost:8883/requests/`, {
+        axios.post(`http://backend:883/requests/`, {
             email: req.email,
             title: req.titulo,
             body: req.descricao,
@@ -45,7 +45,7 @@ const HomeContainer = () => {
 
     const updateRequest = (req) => {
         setLoadingList(true);
-        axios.put(`http://localhost:8883/requests/${req.id}`, {
+        axios.put(`http://backend:883/requests/${req.id}`, {
             email: req.email,
             title: req.titulo,
             body: req.descricao,
@@ -89,7 +89,7 @@ const HomeContainer = () => {
 
     const deleteItem = (id) => {
         setLoadingList(true);
-        axios.delete(`http://localhost:8883/requests/${id}`)
+        axios.delete(`http://backend:883/requests/${id}`)
             .then(res => {
                 setLoadingList(false);
                 setSuccessMessage("Chamado deletado com sucesso!");
@@ -104,7 +104,7 @@ const HomeContainer = () => {
 
     const updateItem = (id) => {
         setLoadingList(true);
-        axios.get(`http://localhost:8883/requests/${id}`)
+        axios.get(`http://backend:883/requests/${id}`)
             .then(res => {
                 const { _id, email, title, requestStatus, body } = res.data.data[0];
                 setLoadingList(false);
