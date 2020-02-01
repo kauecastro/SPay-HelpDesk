@@ -9,7 +9,7 @@ services:
       - '8883:8883'
     links:
       - mongo
-  app:
+  frontend:
     container_name: docker-node-frontend
     restart: always
     build: 
@@ -17,7 +17,7 @@ services:
     ports: 
       - '8080:8080'
     links:
-      - docker-node-backend
+      - backend
   mongo:
     container_name: mongo
     image: mongo
