@@ -11,7 +11,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDefinition = {
     openapi: "3.0.0",
     info: {
-        title: "Netflix.Core.HelpDesk",
+        title: "HelpDesk",
         version: "1.0.0",
         description: "API to open and monitoring requests to Help Desk"
     },
